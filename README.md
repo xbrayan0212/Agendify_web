@@ -19,3 +19,53 @@
 - **Base de Datos**: MySQL.
 - **Autenticación**: Sistema de autenticación propio de Laravel (login y registro).
 - **Notificaciones**: Recordatorio
+
+Aquí tienes la sección de **Instalación** y **Uso** en formato Markdown:
+
+```md
+## Instalación ⚙️
+
+1. Clona este repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/agendify.git
+   ```
+
+2. Navega hasta el directorio del proyecto:
+   ```bash
+   cd agendify
+   ```
+
+3. Instala las dependencias de PHP con Composer:
+   ```bash
+   composer install
+   ```
+
+4. Instala las dependencias de JavaScript con NPM:
+   ```bash
+   npm install
+   ```
+
+5. Configura tu archivo `.env` para la base de datos:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+6. Crea las tablas de la base de datos:
+   ```bash
+   php artisan migrate
+   ```
+
+7. Ejecuta el servidor local:
+   ```bash
+   php artisan serve
+   ```
+
+## Uso 📝
+
+1. **Registro de Profesional**: Registra un nuevo profesional proporcionando la información básica.
+2. **Registrar Clientes**: Añade nuevos clientes desde el perfil del profesional.
+3. **Agendar Citas**: Programa citas para los clientes seleccionando fecha, hora y servicio.
+4. **Visualiza el Historial**: Revisa citas pasadas con detalles de las consultas y resultados.
+5. **Gestiona Servicios**: Visualiza y administra los servicios que ofreces como profesional.
+```
