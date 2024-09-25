@@ -20,9 +20,7 @@
 - **Autenticación**: Sistema de autenticación propio de Laravel (login y registro).
 - **Notificaciones**: Recordatorio
 
-Aquí tienes la sección de **Instalación** y **Uso** en formato Markdown:
 
-```md
 ## Instalación ⚙️
 
 1. Clona este repositorio:
@@ -61,11 +59,3 @@ Aquí tienes la sección de **Instalación** y **Uso** en formato Markdown:
    php artisan serve
    ```
 
-## Uso 📝
-
-1. **Registro de Profesional**: Registra un nuevo profesional proporcionando la información básica.
-2. **Registrar Clientes**: Añade nuevos clientes desde el perfil del profesional.
-3. **Agendar Citas**: Programa citas para los clientes seleccionando fecha, hora y servicio.
-4. **Visualiza el Historial**: Revisa citas pasadas con detalles de las consultas y resultados.
-5. **Gestiona Servicios**: Visualiza y administra los servicios que ofreces como profesional.
-```
