@@ -45,8 +45,7 @@
 
 5. Configura tu archivo `.env` para la base de datos:
    ```bash
-   cp .env.example .env
-   php artisan key:generate
+   cp .env
    ```
 
 6. Crea las tablas de la base de datos:
