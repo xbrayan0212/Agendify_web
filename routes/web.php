@@ -3,21 +3,16 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Gestion\DashboardController;
-
+use App\Http\Controllers\Gestion\CitasController;
+use App\Http\Controllers\Gestion\ClientesController;
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::get('/citas', [CitasController::class, 'index'])->middleware(['auth', 'verified'])->name('citas');
+Route::get('/clientes',[ClientesController::class,'index'])->middleware(['auth', 'verified'])->name('clientes');
 
 Route::get('/calendario', function () {
     return view('gestion.calendario');
 })->middleware(['auth', 'verified'])->name('calendario');
 
-Route::get('/citas', function () {
-    return view('gestion.citas');
-})->middleware(['auth', 'verified'])->name('citas');
-
-Route::get('/clientes', function () {
-    return view('gestion.clientes');
-})->middleware(['auth', 'verified'])->name('clientes');
 
 
 
