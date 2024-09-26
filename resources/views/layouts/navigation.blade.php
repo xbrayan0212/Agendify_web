@@ -17,17 +17,17 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('calendario')">
+                    <x-nav-link :href="route('calendario')" :active="request()->routeIs('calendario')">
                         {{ __('Calendario') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('clientes')">
+                    <x-nav-link :href="route('clientes')" :active="request()->routeIs('clientes')">
                         {{ __('Clientes') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('Citas')">
+                    <x-nav-link :href="route('citas')" :active="request()->routeIs('citas')">
                         {{ __('Citas') }}
                     </x-nav-link>
                 </div>
@@ -88,13 +88,13 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('calendario')">
+            <x-responsive-nav-link :href="route('calendario')" :active="request()->routeIs('calendario')">
                 {{ __('Calendario') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link  :href="route('dashboard')" :active="request()->routeIs('clientes')">
+            <x-responsive-nav-link  :href="route('clientes')" :active="request()->routeIs('clientes')">
                 {{ __('Clientes') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('Citas')">
+            <x-responsive-nav-link :href="route('citas')" :active="request()->routeIs('citas')">
                 {{ __('Citas') }}
             </x-responsive-nav-link>
         </div>
