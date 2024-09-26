@@ -7,7 +7,8 @@ use App\Models\Cliente;
 use App\Models\Cita;
 use App\Models\Historial;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; // Asegúrate de importar Auth
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -15,27 +16,55 @@ class DashboardController extends Controller
     {
         $userId = Auth::id(); // Obtiene el ID del usuario que ha iniciado sesión
 
-        // Obtén la lista de clientes relacionados con el profesional
-        $clientes = Cliente::select('nombre', 'telefono')
+        // Obtener el inicio y fin del mes actual
+        $inicioDelMes = Carbon::now()->startOfMonth();
+        $finDelMes = Carbon::now()->endOfMonth();
+
+        // Consultas combinadas para obtener datos necesarios
+        $clientes = Cliente::select('nombre', 'apellido', 'telefono')
             ->where('id_profesional', $userId)
             ->get();
 
-        // Obtén las citas agendadas para el profesional
+        $citasPendientesMes = Cita::where('id_profesional', $userId)
+            ->where('estado', 'pendiente')
+            ->whereBetween('fecha', [$inicioDelMes, $finDelMes])
+            ->count();
+
+        $citasFinalizadasMes = Cita::where('id_profesional', $userId)
+            ->where('estado', 'finalizada')
+            ->whereBetween('fecha', [$inicioDelMes, $finDelMes])
+            ->count();
+
+        $clientesAtendidosMes = Cita::where('id_profesional', $userId)
+            ->whereBetween('fecha', [$inicioDelMes, $finDelMes])
+            ->with('cliente')
+            ->distinct('id_cliente')
+            ->count('id_cliente');
+
+        // Obtener las citas agendadas y el historial
         $citas = Cita::select('fecha', 'hora', 'estado')
             ->where('id_profesional', $userId)
             ->get();
 
-        // Obtén el historial de citas con el nombre del cliente
         $historial = Historial::with(['cita.cliente'])
             ->whereHas('cita', function ($query) use ($userId) {
                 $query->where('id_profesional', $userId);
             })
             ->get();
 
-        foreach ($historial as $item) {
-            $item->cliente_nombre = $item->cita->cliente->nombre;
-        }
 
-        return view('dashboard', compact('clientes', 'citas', 'historial'));
+            // Datos para la grafica
+        $citasPorEstado = Cita::select('estado', \DB::raw('count(*) as total'))
+        ->where('id_profesional', $userId)
+        ->groupBy('estado')
+        ->pluck('total', 'estado');
+
+        $labels = $citasPorEstado->keys();
+        $totales = $citasPorEstado->values();
+
+
+        // Pasar las variables a la vista
+      return view('dashboard', compact('clientes', 'citas', 'historial', 'clientesAtendidosMes', 'citasPendientesMes', 'citasFinalizadasMes', 'labels', 'totales'));
+
     }
 }
