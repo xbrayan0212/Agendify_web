@@ -35,9 +35,9 @@ class DashboardController extends Controller
             ->whereBetween('fecha', [$inicioDelMes, $finDelMes])
             ->count();
 
-        $clientesAtendidosMes = Cita::where('id_profesional', $userId)
+        $clientesRegistradosMes = Cita::where('id_profesional', $userId)
             ->whereBetween('fecha', [$inicioDelMes, $finDelMes])
-            ->with('cliente')
+            ->with('cliente'    )
             ->distinct('id_cliente')
             ->count('id_cliente');
 
@@ -64,7 +64,7 @@ class DashboardController extends Controller
 
 
         // Pasar las variables a la vista
-      return view('dashboard', compact('clientes', 'citas', 'historial', 'clientesAtendidosMes', 'citasPendientesMes', 'citasFinalizadasMes', 'labels', 'totales'));
+      return view('dashboard', compact('clientes', 'citas', 'historial', 'clientesRegistradosMes', 'citasPendientesMes', 'citasFinalizadasMes', 'labels', 'totales'));
 
     }
 }
