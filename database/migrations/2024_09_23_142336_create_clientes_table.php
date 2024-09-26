@@ -15,6 +15,8 @@ class CreateClientesTable extends Migration
             $table->string('email')->unique();
             $table->string('telefono')->nullable();
             $table->string('residencia')->nullable();
+            $table->string('cedula')->unique();
+            $table->foreignId('id_profesional')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

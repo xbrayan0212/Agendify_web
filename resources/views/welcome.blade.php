@@ -80,7 +80,7 @@
             <div class="max-w-7xl mx-auto px-6">
                 <!-- Sección de Bienvenida -->
                 <div class="text-center mb-10">
-                    <h1 class="text-6xl font-extrabold text-[#2B318A] mb-4 animate-pulse">
+                    <h1 class="text-6xl font-extrabold text-[#2B318A] mb-4 ">
                         Bienvenido a Agendify
                     </h1>
                     <p class="text-xl text-gray-700 mb-8">
