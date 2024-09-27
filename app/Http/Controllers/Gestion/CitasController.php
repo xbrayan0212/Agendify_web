@@ -47,4 +47,12 @@ class CitasController extends Controller
 
         return view('gestion.citas', compact('citas', 'cedulas', 'clientes', 'servicios', 'atributos', 'rows'));
     }
+
+    //agndar/guardarcita
+
+    public function guardar(Request $request){
+
+        
+
+    }
 }

@@ -35,11 +35,10 @@ class DashboardController extends Controller
             ->whereBetween('fecha', [$inicioDelMes, $finDelMes])
             ->count();
 
-        $clientesRegistradosMes = Cita::where('id_profesional', $userId)
-            ->whereBetween('fecha', [$inicioDelMes, $finDelMes])
-            ->with('cliente'    )
-            ->distinct('id_cliente')
-            ->count('id_cliente');
+        $clientesRegistradosMes = Cliente::where('id_profesional', $userId)
+            ->whereBetween('created_at', [$inicioDelMes, $finDelMes])
+            ->distinct('id')
+            ->count('id');
 
         // Obtener las citas agendadas y el historial
         $citas = Cita::select('fecha', 'hora', 'estado')

@@ -14,8 +14,8 @@
     </div>
     <form action="{{$ruta}}" method="POST">
         @csrf
-        <div class="overflow-x-auto">
-            <table class="min-w-full text-left divide-y divide-gray-200">
+        <div class="overflow-x-auto  max-h-96">
+            <table class="min-w-full text-left divide-y divide-gray-200 ">
                 <thead>
                     <tr class="text-sm font-medium text-gray-700 rounded-lg">
                         @foreach ($atributos as $atributo)

@@ -11,13 +11,16 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 Route::get('/citas', [CitasController::class, 'index'])->middleware(['auth', 'verified'])->name('citas');
 Route::get('/clientes',[ClientesController::class,'index'])->middleware(['auth', 'verified'])->name('clientes');
 
+Route::post('/clientes/guardar', [ClientesController::class, 'guardar'])->name('clientes.guardar');
+
+
 Route::get('/calendario', function () {
     return view('gestion.calendario');
 })->middleware(['auth', 'verified'])->name('calendario');
 
 
 Route::get('/', function () {
-    return view('welcome'); 
+    return view('welcome');
 });
 
 

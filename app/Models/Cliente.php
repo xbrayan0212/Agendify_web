@@ -15,6 +15,8 @@ class Cliente extends Model
         'email',
         'telefono',
         'residencia',
+        'cedula',
+        'id_profesional',
     ];
 
     public function citas()
