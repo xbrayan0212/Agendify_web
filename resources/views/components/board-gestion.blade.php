@@ -1,16 +1,17 @@
 <div class="bg-white rounded-2xl shadow-lg mx-auto my-3 p-4 font-Poppins max-w-[1200px] min-h-96">
     <div>
         <h2 class="text-stone-950 text-left text-xl md:text-2xl lg:text-2xl my-4 px-4">{{ $title }}</h2>
-        <div class="flex justify-end items-center mb-4">
-            <label for="sort" class="mr-2 text-sm font-medium text-gray-700">Ordenar por:</label>
-            <select name="sort" id="sort" class="w-full md:w-64 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2">
-                <option disabled selected>- Seleccionar -</option>
-                @foreach ($atributos as $atributo)
-                    <option class="p-2" value="{{$atributo}}">{{$atributo}}</option>
-                @endforeach
-            </select>
-
-        </div>
+        <form action="{{ route($ruta) }}" method="GET">
+            <div class="flex justify-end items-center mb-4">
+                <label for="sort" class="mr-2 text-sm font-medium text-gray-700">Ordenar por:</label>
+                <select name="sort" id="sort" class="w-full md:w-64 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2">
+                    <option disabled selected>- Seleccionar -</option>
+                    @foreach ($orders as $order)
+                        <option value="{{ $order }}" {{ request('sort') == $order ? 'selected' : '' }}>{{ ucfirst($order) }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </form>
     </div>
     <form action="{{$ruta}}" method="POST">
         @csrf

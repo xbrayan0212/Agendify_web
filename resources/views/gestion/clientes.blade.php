@@ -19,9 +19,10 @@
     <!--Tablero para gestion de  Cliente-->
     <x-board-gestion
         title="Gestionar Cliente"
-        :ruta="'/dashboard'"
+        ruta="clientes"
         :atributos="$atributos"
         :rows="$rows"
+        :orders="$atributos"
     >
     </x-board-gestion>
 
@@ -51,5 +52,10 @@
 
 </x-app-layout>
 
+<script>
+    document.getElementById('sort').addEventListener('change', function() {
+        this.form.submit();
+    });
+</script>
 
 

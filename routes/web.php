@@ -13,6 +13,7 @@ Route::get('/clientes',[ClientesController::class,'index'])->middleware(['auth',
 
 Route::post('/clientes/guardar', [ClientesController::class, 'guardar'])->name('clientes.guardar');
 
+Route::post('citas/guardar', [CitasController::class, 'guardar'])->name('citas.guardar');
 
 Route::get('/calendario', function () {
     return view('gestion.calendario');

@@ -13,12 +13,14 @@ class BoardGestion extends Component
     public $ruta;
     public $atributos;
     public $rows;
-    public function __construct($title, $atributos, $rows,$ruta)
+    public $orders;
+    public function __construct($title, $atributos, $rows,$ruta,$orders)
     {
         $this->title = $title;
         $this->atributos = $atributos;
         $this->rows = $rows;
         $this->ruta= $ruta;
+        $this->orders=$orders;
     }
 
     public function render(): View|Closure|string

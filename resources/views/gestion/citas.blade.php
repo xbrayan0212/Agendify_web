@@ -1,13 +1,13 @@
 <x-app-layout>
     <div class="container"></div>
-    <x-form-create title="Agendar Cita" :ruta="'dashboard'">
+    <x-form-create title="Agendar Cita" ruta="citas.guardar">
         <!-- Campos del formulario -->
         <div class="mb-4">
             <x-input-label for="cedula" class="block text-stone-950 mb-2">Cédula:</x-input-label>
-            <select name="cedula" id="cedula" onchange="mostrarNombre(this)" class="border border-stone-300 rounded-md p-2 w-full focus:outline-none focus:ring focus:ring-stone-500" required>
+            <select name="cedula" id="cedula" onchange="mostrarNombre(this)" class="border border-stone-300 rounded-md p-2 w-full focus:outline-none focus:ring focus:ring-stone-500">
                 <option value="">Seleccione una cédula</option>
                 @foreach ($clientes as $cliente)
-                    <option value="{{ $cliente->cedula }}" data-nombre="{{ $cliente->nombre }} {{ $cliente->apellido }}">
+                    <option value="{{ $cliente->id }}" data-nombre="{{ $cliente->nombre }} {{ $cliente->apellido }}">
                         {{ $cliente->cedula }}
                     </option>
                 @endforeach
@@ -21,19 +21,19 @@
 
         <div class="mb-4">
             <x-input-label for="fecha" class="block text-stone-950 mb-2">Fecha:</x-input-label>
-            <input type="date" id="fecha" name="fecha" class="border border-stone-300 rounded-md p-2 w-full focus:outline-none focus:ring focus:ring-stone-500" required>
+            <input type="date" id="fecha" name="fecha" class="border border-stone-300 rounded-md p-2 w-full focus:outline-none focus:ring focus:ring-stone-500" >
         </div>
 
         <div class="mb-4">
             <x-input-label for="hora" class="block text-stone-950 mb-2">Hora:</x-input-label>
-            <input type="time" id="hora" name="hora" class="border border-stone-300 rounded-md p-2 w-full focus:outline-none focus:ring focus:ring-stone-500" required>
+            <input type="time" id="hora" name="hora" class="border border-stone-300 rounded-md p-2 w-full focus:outline-none focus:ring focus:ring-stone-500" >
         </div>
 
         <div class="mb-4">
             <x-input-label for="servicio" class="block text-stone-950 mb-2">Servicio:</x-input-label>
             <select name="servicio" id="servicio" class="border border-stone-300 rounded-md p-2 w-full focus:outline-none focus:ring focus:ring-stone-500">
                 @foreach ($servicios as $option)
-                    <option value="{{ $option }}">{{ $option }}</option>
+                    <option value="{{ $option->id }}">{{ $option->nombre_servicio }}</option>
                 @endforeach
             </select>
         </div>
@@ -45,14 +45,44 @@
     </x-form-create>
 
     <x-board-gestion
-        title="Gestion de Citas"
-        :ruta="'/dashboard'"
+        title="Gestión de Citas"
+        ruta="citas"
         :atributos="$atributos"
         :rows="$rows"
-    ></x-board-gestion>
+        :orders="['fecha', 'estado','nombre']"
+        ></x-board-gestion>
+
+       <!-- Modal para mensajes -->
+       <x-modal name="messageModal" :show="session('success') || session('error') || $errors->any()" maxWidth="sm">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            @if (session('success'))
+                <h2 class="text-lg font-bold text-green-600 mb-2">Éxito</h2>
+                <p class="text-gray-700">{{ session('success') }}</p>
+            @elseif (session('error'))
+                <h2 class="text-lg font-bold text-red-600 mb-2">Error</h2>
+                <p class="text-gray-700">{{ session('error') }}</p>
+            @endif
+            @if ($errors->any())
+                <h2 class="text-lg font-bold text-red-600 mb-2">Errores de Validación</h2>
+                <ul class="list-disc list-inside text-gray-700">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
+            <button @click="show = false" class="mt-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">
+                Cerrar
+            </button>
+        </div>
+    </x-modal>
 </x-app-layout>
 
 <script>
+
+    document.getElementById('sort').addEventListener('change', function() {
+        this.form.submit();
+    });
+
     function mostrarNombre(select) {
         const selectedOption = select.options[select.selectedIndex];
         const nombreCompleto = selectedOption.getAttribute('data-nombre');
