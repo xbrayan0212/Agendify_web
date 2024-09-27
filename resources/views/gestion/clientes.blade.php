@@ -10,4 +10,13 @@
         </div>
     @endforeach
     </x-form-create>
+
+    <x-board-gestion
+    title="Gestionar Cliente"
+    :ruta="'/dashboard'"
+    :atributos="$atributos"
+    :rows="$rows"
+    >
+</x-board-gestion>
+
 </x-app-layout>

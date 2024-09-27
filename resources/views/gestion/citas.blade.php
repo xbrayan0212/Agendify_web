@@ -1,9 +1,6 @@
 <x-app-layout>
     <div class="container"></div>
-    <x-form-create
-        title="Agendar Cita"
-        :ruta="'dashboard'"
-    >
+    <x-form-create title="Agendar Cita" :ruta="'dashboard'">
         <!-- Campos del formulario -->
         <div class="mb-4">
             <x-input-label for="cedula" class="block text-stone-950 mb-2">Cédula:</x-input-label>
@@ -41,12 +38,18 @@
             </select>
         </div>
 
-        <div class="mb-4 ">
+        <div class="mb-4">
             <x-input-label for="motivo" class="block text-stone-950 mb-2">Motivo:</x-input-label>
             <input type="text" id="motivo" name="motivo" class="border border-stone-300 rounded-md p-2 w-full" placeholder="Escribe el motivo aquí">
         </div>
-
     </x-form-create>
+
+    <x-board-gestion
+        title="Gestion de Citas"
+        :ruta="'/dashboard'"
+        :atributos="$atributos"
+        :rows="$rows"
+    ></x-board-gestion>
 </x-app-layout>
 
 <script>
