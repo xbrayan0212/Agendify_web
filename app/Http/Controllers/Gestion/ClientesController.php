@@ -18,7 +18,7 @@ class ClientesController extends Controller
 
         // Obtener el valor seleccionado por el usuario
         $sort = $request->input('sort', 'nombre');
-        $rows = Cliente::select('nombre', 'apellido', 'email', 'telefono', 'residencia', 'cedula')
+        $rows = Cliente::select('nombre', 'apellido', 'email', 'telefono', 'residencia', 'cedula','id')
                        ->where('id_profesional', $userId)
                        ->orderBy($sort)
                        ->get();
@@ -60,5 +60,14 @@ class ClientesController extends Controller
             return redirect()->route('clientes')->with('error', 'Error al guardar el cliente: ' . $e->getMessage());
         }
     }
+    public function eliminar($id){
+        $userId = Auth::id();
 
+        $cliente =  Cliente::where('id', $id)->where('id_profesional', $userId)->first();
+
+        $cliente->delete();
+
+        return redirect()->route('clientes')->with('success', 'Cita eliminada exitosamente.');
+
+}
 }

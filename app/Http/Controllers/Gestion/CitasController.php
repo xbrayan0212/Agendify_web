@@ -35,13 +35,14 @@ class CitasController extends Controller
             return [
                 'fecha' => $cita->fecha,
                 'hora' => $cita->hora,
+                'id' => $cita->id,
                 'motivo' => $cita->motivo,
                 'estado' => $cita->estado,
                 'nombre_servicio' => $cita->nombre_servicio,
                 'nombre' => $cita->nombre,
             ];
         });
-        
+
         $sort = $request->input('sort', 'nombre');
         // Ordenar las filas según el parámetro recibido
           $rows = $rows->sortBy($sort);
@@ -87,5 +88,21 @@ class CitasController extends Controller
             // Manejo de error
             return back()->withErrors(['error' => 'Ocurrió un error al guardar la cita.' . $e->getMessage()]);
         }
+    }
+
+    public function eliminar($id)
+    {
+        $userId = Auth::id();
+
+        // Buscar la cita por su ID y asegurarse de que pertenece al profesional autenticado
+        $cita = Cita::where('id', $id)->where('id_profesional', $userId)->first();
+
+
+            // Eliminar la cita
+            $cita->delete();
+
+            // Redireccionar con éxito
+            return redirect()->route('clientes')->with('success', 'Cita eliminada exitosamente.');
+
     }
 }

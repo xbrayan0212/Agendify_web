@@ -13,8 +13,6 @@
             </div>
         </form>
     </div>
-    <form action="{{$ruta}}" method="POST">
-        @csrf
         <div class="overflow-x-auto  max-h-96">
             <table class="min-w-full text-left divide-y divide-gray-200 ">
                 <thead>
@@ -33,8 +31,13 @@
                             @endforeach
                             <td class="flex items-center justify-center py-2">
                                 <div class="flex space-x-2">
-                                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded hover:bg-blue-600 transition">Modificar</button>
-                                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded hover:bg-red-600 transition">Eliminar</button>
+                                    <form action=""></form>
+                                        <form action="{{ route($rutaDrop, $row['id']) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta cita?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </form>
+
                                 </div>
                             </td>
                         </tr>
@@ -42,5 +45,4 @@
                 </tbody>
             </table>
         </div>
-    </form>
 </div>

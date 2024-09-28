@@ -23,6 +23,7 @@
         :atributos="$atributos"
         :rows="$rows"
         :orders="$atributos"
+        rutaDrop="clientes.eliminar"
     >
     </x-board-gestion>
 

@@ -50,6 +50,7 @@
         :atributos="$atributos"
         :rows="$rows"
         :orders="['fecha', 'estado','nombre']"
+        rutaDrop="citas.eliminar"
         ></x-board-gestion>
 
        <!-- Modal para mensajes -->
