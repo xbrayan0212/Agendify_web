@@ -102,7 +102,48 @@ class CitasController extends Controller
             $cita->delete();
 
             // Redireccionar con éxito
-            return redirect()->route('clientes')->with('success', 'Cita eliminada exitosamente.');
+            return redirect()->route('citas')->with('success', 'Cita eliminada exitosamente.');
 
     }
+
+    public function update(Request $request)
+{
+    $userId = Auth::id();
+
+    // Validar los datos del formulario
+    $validatedData = $request->validate([
+        'fecha' => 'required|date',
+        'hora' => 'required|',
+        'servicio' => 'required|string|',
+        'motivo' => 'nullable|string|max:255',
+        'estado' => 'required|string',
+    ], [
+        'idCita' => 'required|exists:citas,id',
+        'fecha.required' => 'El campo fecha es obligatorio.',
+        'hora.required' => 'El campo hora es obligatorio.',
+        'servicio.required' => 'El campo servicio es obligatorio.',
+        'estado.required' => 'El campo estado es obligatorio.',
+    ]);
+    try {
+        // Encontrar la cita por ID y asegurarse de que pertenece al profesional autenticado
+        $cita = Cita::where('id', $request->idCita)->where('id_profesional', $userId)->firstOrFail();
+
+        // Actualizar la cita con los datos validados
+        $cita->fecha = $validatedData['fecha'];
+        $cita->hora = $validatedData['hora'];
+        $cita->motivo = $validatedData['motivo'];
+        $cita->estado = $validatedData['estado'];
+        $cita->id_servicio = $validatedData['servicio'];
+        $cita->save();
+
+        // Redireccionar con éxito
+        return redirect()->route('citas')->with('success', 'Cita actualizada exitosamente.');
+
+    } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        return redirect()->route('citas')->with('error', 'Cita no encontrada.');
+    } catch (\Exception $e) {
+        return redirect()->route('citas')->with('error', 'Ocurrió un error al actualizar la cita: ' . $e->getMessage());
+    }
+}
+
 }

@@ -69,5 +69,43 @@ class ClientesController extends Controller
 
         return redirect()->route('clientes')->with('success', 'Cita eliminada exitosamente.');
 
-}
+    }
+
+    public function update(Request $request)
+    {
+        try {
+            // Validar los datos
+            $validatedData = $request->validate([
+                'cedulaOld' => 'required|exists:clientes,cedula',
+                'nombre' => 'required|string|max:255',
+                'apellido' => 'required|string|max:255',
+                'email' => 'required|email|unique:clientes,email,' . $request->cedulaOld . ',cedula',
+                'telefono' => 'nullable|string|max:15|unique:clientes,telefono,' . $request->cedulaOld . ',cedula',
+                'residencia' => 'nullable|string|max:255',
+                'cedula' => 'required|string|unique:clientes,cedula,' . $request->cedulaOld . ',cedula',
+            ],[
+                'cedulaOld.exists' => 'Registro de Cliente No encontrado',
+                'nombre.required' => 'El campo nombre es obligatorio.',
+                'apellido.required' => 'El campo apellido es obligatorio.',
+                'email.required' => 'El campo email es obligatorio.',
+                'email.email' => 'El campo email debe ser una dirección de correo válida.',
+                'email.unique' => 'El correo electrónico ya está en uso.',
+                'telefono.unique' => 'El número de teléfono ya está en uso.',
+                'cedula.required' => 'El campo cédula es obligatorio.',
+                'cedula.unique' => 'La cédula ya está en uso.',
+            ]);
+
+            // Buscar el cliente por 'cedulaOld'
+            $cliente = Cliente::where('cedula', $request->cedulaOld)->firstOrFail();
+
+            // Actualizar los datos del cliente
+            $cliente->update(array_merge($validatedData, ['id_profesional' => Auth::id()]));
+
+            return redirect()->route('clientes')->with('success', 'Cliente actualizado exitosamente.');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->route('clientes')->withErrors($e->validator)->withInput();
+        } catch (\Exception $e) {
+            return redirect()->route('clientes')->with('error', 'Error al guardar el cliente: ' . $e->getMessage());
+        }
+    }
 }

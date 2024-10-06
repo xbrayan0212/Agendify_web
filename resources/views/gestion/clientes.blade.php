@@ -24,6 +24,7 @@
         :rows="$rows"
         :orders="$atributos"
         rutaDrop="clientes.eliminar"
+        rutaUpdate="clientes.eliminar"
     >
     </x-board-gestion>
 
@@ -51,12 +52,41 @@
         </div>
     </x-modal>
 
+    @include('gestion.partials.updateRegister')
 </x-app-layout>
 
 <script>
     document.getElementById('sort').addEventListener('change', function() {
         this.form.submit();
     });
+
+    function openModal(rowData) {
+        const openModalButtons = document.querySelectorAll('.modificar');
+        const modal = document.getElementById('FormRegister');
+        const overlay = document.getElementById('overlay');
+
+        // Agregar el evento de click a cada botón
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+                overlay.classList.remove('hidden'); // Mostrar el overlay
+            });
+        });
+
+        // Obtener el botón de cerrar y agregar la funcionalidad para ocultar el modal y el overlay
+        const closeModalButton = document.getElementById('closeModal');
+        closeModalButton.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            overlay.classList.add('hidden'); // Ocultar el overlay
+        });
+
+        @foreach ($atributos as $atributo)
+            document.getElementById("{{ $atributo .'Update'}}").value = rowData["{{ $atributo }}"];
+        @endforeach
+        cedulaOld = document.getElementById("cedulaOld");
+        cedulaOld.value= rowData["cedula"];
+        cedulaOld.style.display = "none";
+        }
 </script>
 
 

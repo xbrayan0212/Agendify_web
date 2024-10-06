@@ -31,11 +31,11 @@
                             @endforeach
                             <td class="flex items-center justify-center py-2">
                                 <div class="flex space-x-2">
-                                    <form action=""></form>
-                                        <form action="{{ route($rutaDrop, $row['id']) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta cita?');">
+                                    <button type="button" class="bg-indigo-600 text-white p-2 text-xs rounded modificar" onclick="openModal({{ json_encode($row) }})">Modificar</button>
+                                        <form action="{{ route($rutaDrop, $row['id']) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            <button type="submit" class="bg-rose-600 p-2  text-white text-sm text-xs    rounded">Eliminar</button>
                                         </form>
 
                                 </div>

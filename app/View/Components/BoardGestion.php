@@ -15,7 +15,8 @@ class BoardGestion extends Component
     public $rows;
     public $orders;
     public $rutaDrop;
-    public function __construct($title, $atributos, $rows,$ruta,$orders,$rutaDrop)
+    public $rutaUpdate;
+    public function __construct($title, $atributos, $rows,$ruta,$orders,$rutaDrop,$rutaUpdate)
     {
         $this->title = $title;
         $this->atributos = $atributos;
@@ -23,6 +24,7 @@ class BoardGestion extends Component
         $this->ruta= $ruta;
         $this->orders=$orders;
         $this->rutaDrop=$rutaDrop;
+        $this->rutaUpdate=$rutaUpdate;
     }
 
     public function render(): View|Closure|string

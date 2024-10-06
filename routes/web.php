@@ -9,15 +9,18 @@ use App\Http\Controllers\Gestion\ClientesController;
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
+//clientes
 Route::get('/clientes',[ClientesController::class,'index'])->middleware(['auth', 'verified'])->name('clientes');
 Route::post('/clientes/guardar', [ClientesController::class, 'guardar'])->name('clientes.guardar');
 Route::delete('clientes/{id}', [ClientesController::class, 'eliminar'])->name('clientes.eliminar');
+Route::put('cliente/update', [ClientesController::class, 'update'])->name('clientes.update');
 
-
+//rutas citas
 
 Route::get('/citas', [CitasController::class, 'index'])->middleware(['auth', 'verified'])->name('citas');
 Route::post('citas/guardar', [CitasController::class, 'guardar'])->name('citas.guardar');
 Route::delete('citas/{id}', [CitasController::class, 'eliminar'])->name('citas.eliminar');
+Route::put('citas/update', [CitasController::class, 'update'])->name('citas.update');
 
 Route::get('/calendario', function () {
     return view('gestion.calendario');
