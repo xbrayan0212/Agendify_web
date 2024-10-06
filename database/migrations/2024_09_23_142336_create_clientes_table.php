@@ -10,12 +10,12 @@ class CreateClientesTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
+            $table->string('cedula')->unique();
             $table->string('nombre');
             $table->string('apellido');
             $table->string('email')->unique();
             $table->string('telefono')->nullable();
             $table->string('residencia')->nullable();
-            $table->string('cedula')->unique();
             $table->foreignId('id_profesional')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
