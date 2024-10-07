@@ -43,7 +43,7 @@
         </div>
     </x-modal>
     <section>
-        @include('gestion.partials.UpdateCita')
+        @include('gestion.partials.updateCita')
     </section>
 </x-app-layout>
 
