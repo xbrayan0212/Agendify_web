@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Gestion\DashboardController;
 use App\Http\Controllers\Gestion\CitasController;
 use App\Http\Controllers\Gestion\ClientesController;
-
+use App\Http\Controllers\Gestion\CalendarioController;
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -22,9 +22,8 @@ Route::post('citas/guardar', [CitasController::class, 'guardar'])->name('citas.g
 Route::delete('citas/{id}', [CitasController::class, 'eliminar'])->name('citas.eliminar');
 Route::put('citas/update', [CitasController::class, 'update'])->name('citas.update');
 
-Route::get('/calendario', function () {
-    return view('gestion.calendario');
-})->middleware(['auth', 'verified'])->name('calendario');
+//calendario
+Route::get('/calendario', [CalendarioController::class, 'index'])->middleware(['auth', 'verified'])->name('calendario');
 
 
 Route::get('/', function () {
