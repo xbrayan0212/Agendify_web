@@ -18,7 +18,7 @@ class ClientesController extends Controller
 
         // Obtener el valor seleccionado por el usuario
         $sort = $request->input('sort', 'nombre');
-        $rows = Cliente::select('nombre', 'apellido', 'email', 'telefono', 'residencia', 'cedula','id')
+        $rows =   Cliente::select('nombre', 'apellido', 'email', 'telefono', 'residencia', 'cedula','id')
                        ->where('id_profesional', $userId)
                        ->orderBy($sort)
                        ->get();
