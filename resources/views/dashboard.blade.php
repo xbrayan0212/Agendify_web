@@ -26,6 +26,14 @@
             </div>
         </div>
 
+        @include('gestion/partials.modal_mensajes')
+
+      <!-- Sección para agregar y ver los servicios --> 
+      @include('gestion/partials.seccion_servicios')
+
+       <!-- Sección para actualizar los servicios --> 
+       @include('gestion/partials.updateServicio')
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             <!-- Lista de Clientes -->
             <x-table-component
@@ -61,6 +69,7 @@
     </div>
 </x-app-layout>
 
+<!--Script para las estadisticas-->
 <script>
     const ctx = document.getElementById('estadoCitasChart').getContext('2d');
     const estadoCitasChart = new Chart(ctx, {
@@ -91,4 +100,26 @@
             }
         }
     });
+
+
+    //funcion para abrir y cerrar el moal
+    function openModal(servicio) {
+    // Establece los valores en el modal
+    document.getElementById("nombre_servicioUpdate").value = servicio.nombre_servicio;
+    document.getElementById("descripcionUpdate").value = servicio.descripcion;
+    document.getElementById("idServicio").value=servicio.id;
+    
+
+    // Muestra el modal y el overlay
+    document.getElementById("UpdateServicio").classList.remove("hidden");
+    document.getElementById("overlay").classList.remove("hidden");
+    }
+
+    function closeModal() {
+        // Oculta el modal y el overlay
+        document.getElementById("UpdateServicio").classList.add("hidden");
+        document.getElementById("overlay").classList.add("hidden");
+    }
+
+
 </script>
