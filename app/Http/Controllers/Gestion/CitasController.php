@@ -60,11 +60,13 @@ class CitasController extends Controller
         $validate = $request->validate([
             'fecha' => 'required|date',
             'hora' => 'required|date_format:H:i',
-            'servicio' => 'string|max:255',
+            'servicio' => 'required|exists:servicios,id',
             'motivo' => 'string|max:255',
         ], [
             'fecha.required' => 'El campo fecha es obligatorio.',
             'hora.required' => 'El campo hora es obligatorio.',
+            'servicio.required' => 'Debes seleccionar un servicio.',
+            'servicio.exists' => 'El servicio seleccionado no existe. Debes crear un servicio primero.',
         ]);
 
         try {

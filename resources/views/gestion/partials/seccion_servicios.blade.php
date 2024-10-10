@@ -2,18 +2,18 @@
     <h1 class="text-neutral-950 text-left text-xl md:text-2xl lg:text-2xl font-semibold mb-6">Gestión de Servicios</h1>
     <div class="flex flex-col lg:flex-row gap-6">
         <!-- Tabla de Servicios -->
-        <div class="w-full lg:w-2/3 rounded-lg p-4 max-h-72 overflow-y-auto">
+        <div class="w-full lg:w-2/3 rounded-lg max-h-72 overflow-y-auto ">
             <table class="min-w-full text-left">
-                <thead>
-                    <tr class="text-sm font-medium text-gray-700 bg-blue-50 rounded-t-lg">
-                        <th class="px-6 py-3 border-b border-gray-200">Nombre</th>
-                        <th class="px-6 py-3 border-b border-gray-200">Descripción</th>
-                        <th class="px-6 py-3 border-b border-gray-200 text-center">Accion</th>
+                <thead >
+                    <tr class="text-sm font-medium text-gray-700  rounded-lg">
+                        <th class="px-6 py-3 border-b border-gray-200 sticky top-0 z-10 bg-blue-50">Nombre</th>
+                        <th class="px-6 py-3 border-b border-gray-200 sticky top-0 z-10 bg-blue-50">Descripción</th>
+                        <th class="px-6 py-3 border-b border-gray-200 sticky top-0 z-10 bg-blue-50">Accion</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="divide-y divide-gray-100">
                     @foreach ($servicios as $servicio)
-                        <tr class="text-sm text-gray-700 hover:bg-gray-100">
+                        <tr class="hover:bg-gray-50 transition-colors">
                             <td class="px-6 py-4 border-b border-gray-200">{{ $servicio->nombre_servicio }}</td>
                             <td class="px-6 py-4 border-b border-gray-200">{{ $servicio->descripcion }}</td>
                             <td class="px-6 py-4 border-b border-gray-200 text-center text-white text-xs    ">
@@ -54,7 +54,3 @@
         </div>
     </div>
 </section>
-
-<script>
-
-</script>

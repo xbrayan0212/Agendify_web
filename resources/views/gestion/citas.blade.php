@@ -6,7 +6,8 @@
                 :servicios="$servicios"
                 :atributos="$atributos"
                 />
-                </x-form-create>
+                
+    </x-form-create>
             </section>
 
     <x-board-gestion
