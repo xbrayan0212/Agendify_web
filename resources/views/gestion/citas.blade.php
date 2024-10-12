@@ -90,6 +90,24 @@
             }
         }
 
+        //cambio de hora dd 24 horas a 12 horas
+        const hora12 = rowData["hora"]; // Suponiendo que tienes la hora en formato de 12 horas (ejemplo: "02:30 PM")
+        const [time, modifier] = hora12.split(" ");
+        let [hours, minutes] = time.split(":");
+        
+        if (modifier === "PM" && hours !== "12") {
+            hours = parseInt(hours, 10) + 12; // Convertir a 24 horas
+        } else if (modifier === "AM" && hours === "12") {
+            hours = "00"; // Si es 12 AM, debe ser 00 horas
+        }
+        
+        const hora24 = `${hours}:${minutes}`; // Formato 24 horas
+
+        // Establecer el valor en el input de hora
+        document.getElementById("horaUpdate").value = hora24;
+
+        console.log(rowData);
+
 
 
         }
