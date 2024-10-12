@@ -13,6 +13,7 @@ class CreateHistorialTable extends Migration
             $table->date('fecha_consulta');
             $table->text('observaciones')->nullable();
             $table->foreignId('id_cita')->constrained('citas')->onDelete('cascade');
+            $table->foreignId('id_profesional')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
