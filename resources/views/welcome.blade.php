@@ -147,8 +147,6 @@
             </section>
         </main>
 
-        <footer class="bg-gray-800 text-white text-center py-4">
-            <p>&copy; 2024 Agendify. Todos los derechos reservados.</p>
-        </footer>
+        @include('layouts.footer')
     </body>
 </html>
