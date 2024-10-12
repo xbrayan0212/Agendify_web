@@ -44,7 +44,7 @@
 
             <!-- Citas Agendadas -->
             <x-table-component
-                title="Citas Agendadas"
+                title="Citas Pendientes Agendadas"
                 :headers="['Fecha', 'Hora', 'Estado']"
                 :rows="$citas->map(fn($cita) => [$cita->fecha, $cita->hora, $cita->estado])->toArray()"
             />
@@ -55,10 +55,16 @@
             <div class="flex flex-col ">
                 <x-table-component
                     title="Historial"
-                    :headers="['Cliente', 'Fecha', 'Observaciones']"
-                    :rows="$historial->map(fn($entry) => [$entry->cita->cliente->nombre .' ' . $entry->cita->cliente->apellido, $entry->fecha_consulta, $entry->observaciones])->toArray()"
+                    :headers="['Cliente', 'Fecha', 'Estado', 'Observaciones']"
+                    :rows="$historial->map(fn($entry) => [
+                        $entry->cita->cliente->nombre . ' ' . $entry->cita->cliente->apellido,
+                        $entry->fecha_consulta,
+                        $entry->cita->estado,
+                        $entry->observaciones,
+                    ])->toArray()"
                 />
             </div>
+            
 
             <!-- Gráfico de Estado de Citas -->
             <div class="flex flex-col bg-white p-4 rounded-lg shadow-md">
