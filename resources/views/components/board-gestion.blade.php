@@ -35,7 +35,7 @@
                                         <form action="{{ route($rutaDrop, $row['id']) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="bg-rose-600 p-2  text-white text-sm text-xs    rounded">Eliminar</button>
+                                            <button type="submit" class="bg-rose-600 p-2  text-white text-sm  rounded">Eliminar</button>
                                         </form>
 
                                 </div>
