@@ -8,4 +8,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/calendario', [CalendarioController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('calendario');
+
+Route::put('/calendario', [CalendarioController::class, 'change_cita_details'])->name('cambio_detalles_citas');
 ?>
