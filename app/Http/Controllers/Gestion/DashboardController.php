@@ -17,62 +17,67 @@ class DashboardController extends Controller
     public function index()
     {
         $userId = Auth::id(); // Obtiene el ID del usuario que ha iniciado sesión
-
+    
         // Obtener el inicio y fin del mes actual
         $inicioDelMes = Carbon::now()->startOfMonth();
         $finDelMes = Carbon::now()->endOfMonth();
-
+    
         // Consultas combinadas para obtener datos necesarios
         $clientes = Cliente::select('nombre', 'apellido', 'telefono')
             ->where('id_profesional', $userId)
             ->get();
-
+    
         $citasPendientesMes = Cita::where('id_profesional', $userId)
             ->where('estado', 'pendiente')
             ->whereBetween('fecha', [$inicioDelMes, $finDelMes])
             ->count();
-
+    
         $citasFinalizadasMes = Cita::where('id_profesional', $userId)
             ->where('estado', 'finalizada')
             ->whereBetween('fecha', [$inicioDelMes, $finDelMes])
             ->count();
-
+    
         $clientesRegistradosMes = Cliente::where('id_profesional', $userId)
             ->whereBetween('created_at', [$inicioDelMes, $finDelMes])
             ->distinct('id')
             ->count('id');
-
+    
         // Obtener las citas agendadas y el historial
         $citas = Cita::select('fecha', 'hora', 'estado')
             ->where('id_profesional', $userId)
-            ->get();
-
-        //Obtner los servicios
-        $servicios= Servicio::select('nombre_servicio','descripcion','id')
+            ->where('estado','Pendiente')
+            ->get()
+            ->map(function ($cita) {
+                $cita->hora = Carbon::parse($cita->hora)->format('g:i A'); // Formatear la hora a 'g:i A'
+                return $cita;
+            });
+    
+        // Obtener los servicios
+        $servicios = Servicio::select('nombre_servicio', 'descripcion', 'id')
             ->where('id_profesional', $userId)
             ->get();
         
-        $historial = Historial::with(['cita.cliente'])
-            ->whereHas('cita', function ($query) use ($userId) {
-                $query->where('id_profesional', $userId);
-            })
-            ->get();
-
-
-            // Datos para la grafica
-        $citasPorEstado = Cita::select('estado', \DB::raw('count(*) as total'))
+        $historial = Historial::with(['cita' => function ($query) {
+            $query->select('id', 'estado', 'id_cliente'); // Incluye 'estado' en los datos de la cita
+        }, 'cita.cliente'])
+        ->whereHas('cita', function ($query) use ($userId) {
+            $query->where('id_profesional', $userId);
+        })
+        ->get();
+    
+        // Datos para la grafica
+        $citasPorEstado = Cita::select('estado', Cita::raw('count(*) as total'))
         ->where('id_profesional', $userId)
         ->groupBy('estado')
         ->pluck('total', 'estado');
-
+    
         $labels = $citasPorEstado->keys();
         $totales = $citasPorEstado->values();
-
-
+    
         // Pasar las variables a la vista
-      return view('dashboard', compact('clientes', 'citas', 'historial', 'clientesRegistradosMes', 'citasPendientesMes', 'citasFinalizadasMes', 'labels', 'totales','servicios'));
-
+        return view('dashboard', compact('clientes', 'citas', 'historial', 'clientesRegistradosMes', 'citasPendientesMes', 'citasFinalizadasMes', 'labels', 'totales', 'servicios'));
     }
+    
 
     public function gServicio(Request $request){
 
