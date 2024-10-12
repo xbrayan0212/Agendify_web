@@ -33,15 +33,6 @@
                     </div>
                 </div>
 
-                <!-- Especialidad -->
-                <div class="flex justify-center mt-4">
-                    <div class="w-3/4">
-                        <x-input-label for="especialidad" :value="__('Especialidad')" />
-                        <x-text-input id="especialidad" class="block mt-1 w-full" type="text" name="especialidad" :value="old('especialidad')" required autocomplete="especialidad" />
-                        <x-input-error :messages="$errors->get('especialidad')" class="mt-2" />
-                    </div>
-                </div>
-
                 <!-- Email Address -->
                 <div class="flex justify-center mt-4">
                     <div class="w-3/4">
@@ -50,16 +41,7 @@
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
                 </div>
-
-                <!-- Teléfono -->
-                <div class="flex justify-center mt-4">
-                    <div class="w-3/4">
-                        <x-input-label for="telefono" :value="__('Teléfono')" />
-                        <x-text-input id="telefono" class="block mt-1 w-full" type="text" name="telefono" :value="old('telefono')" required autocomplete="tel" />
-                        <x-input-error :messages="$errors->get('telefono')" class="mt-2" />
-                    </div>
-                </div>
-
+                
                 <!-- Username -->
                 <div class="flex justify-center mt-4">
                     <div class="w-3/4">
