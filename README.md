@@ -81,8 +81,8 @@
 ## Citas
 ![Screenshot from 2024-10-13 13-51-40](https://github.com/user-attachments/assets/2d3ba5c1-f35f-46bd-8b79-e34c9a5f45a0)
 ![Screenshot from 2024-10-13 13-52-39](https://github.com/user-attachments/assets/8e0c964c-6e54-4760-bda0-6c16db263081)
+![Screenshot from 2024-10-13 13-53-23(1)](https://github.com/user-attachments/assets/290e3821-d232-4170-be5a-96a41c17d12f)
 
-![Screenshot from 2024-10-13 13-52-39](https://github.com/user-attachments/assets/32a7df85-e291-4ae8-92e3-6e02da2caad8)
 
 ## Contribuciones
 Si deseas contribuir al proyecto, por favor abre un issue o envía un pull request. 
