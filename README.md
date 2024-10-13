@@ -58,3 +58,17 @@
    php artisan serve
    ```
 
+## Ejemplo de Uso
+Aquí puedes agregar una captura de pantalla de la aplicación o un breve tutorial sobre cómo registrarse y agendar una cita.
+
+## Contribuciones
+Si deseas contribuir al proyecto, por favor abre un issue o envía un pull request. 
+
+## Licencia
+Este proyecto está bajo la licencia MIT.
+
+## Contacto
+Brayan Rodríguez - [xbrayan02.dev@gmail.com](brayan:xbrayan02.dev@gmail.com)
+[LinkedIn](www.linkedin.com/in/brayan-rodríguez-5bbbb22a5) | [Twitter](tu-twitter)
+
+
