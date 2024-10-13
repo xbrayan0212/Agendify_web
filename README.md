@@ -60,7 +60,8 @@
 
 ## Ejemplo de Uso
 Aquí puedes agregar una captura de pantalla de la aplicación o un breve tutorial sobre cómo registrarse y agendar una cita.
-![Uploading Screenshot from 2024-10-13 13-19-37.png…]()
+![image](https://github.com/user-attachments/assets/8f761e96-63a0-40f2-ab88-10d2a8a15206)
+
 
 
 ## Contribuciones
