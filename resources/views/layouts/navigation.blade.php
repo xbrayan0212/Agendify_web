@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="bg-white  border-b border-gray-100 ">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-20">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
@@ -36,6 +36,47 @@
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <x-dropdown align="right" width="96">
+                    <x-slot name="trigger">
+                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500  bg-white  hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            <div>{{ Auth::user()->name }}</div>
+
+                            <div class="ms-1">
+                                <i class="fa-solid fa-bell fa-xl w-16" style="color: #1a5fb4;"></i>
+                            </div>                            
+                        </button>
+                    </x-slot>
+                    <x-slot name="content">
+                        <div class="flex flex-col items-center bg-white p-2 w-full max-w-md">
+                            @if (isset($diasFaltantes))
+                                <div class="flex items-center justify-center space-x-2 mb-4">
+                                    <svg class="w-6 h-6 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m4-6V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-5a2 2 0 00-2-2h-5l-3 3"></path>
+                                    </svg>
+                                    @if ($diasFaltantes == 0)
+                                        <p class="text-lg font-semibold text-center text-indigo-600">
+                                            Hoy tienes cita. <span class="font-normal text-gray-700">No olvides asistir </span>
+                                        </p>
+                                    @elseif ($diasFaltantes == 1)
+                                        <p class="text-lg font-semibold text-center text-yellow-500">
+                                            Mañana tienes cita. <span class="font-normal text-gray-700">No olvides asistir</span>
+                                        </p>
+                                    @else
+                                        <p class="text-lg font-semibold text-center ">
+                                            Faltan <span class="font-bold text-pink-600">{{ $diasFaltantes }}</span> días para tu próxima cita.
+                                        </p>
+                                    @endif
+                                </div>
+                            @else
+                                <p class="text-sm text-gray-500 text-center">
+                                    No tienes citas próximas.
+                                </p>
+                            @endif
+                        </div>
+                    </x-slot>
+                     
+                </x-dropdown>
+                
                 <div class=" bg-blue-600  p-2 rounded">
                     <div class="font-medium text-sm text-white ">{{ Auth::user()->username }}</div>
                 </div>

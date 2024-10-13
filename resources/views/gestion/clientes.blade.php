@@ -29,28 +29,7 @@
     </x-board-gestion>
 
     <!-- Modal para mensajes -->
-    <x-modal name="messageModal" :show="session('success') || session('error') || $errors->any()" maxWidth="sm">
-        <div class="bg-white rounded-lg shadow-lg p-6">
-            @if (session('success'))
-                <h2 class="text-lg font-bold text-green-600 mb-2">Éxito</h2>
-                <p class="text-gray-700">{{ session('success') }}</p>
-            @elseif (session('error'))
-                <h2 class="text-lg font-bold text-red-600 mb-2">Error</h2>
-                <p class="text-gray-700">{{ session('error') }}</p>
-            @endif
-            @if ($errors->any())
-                <h2 class="text-lg font-bold text-red-600 mb-2">Errores de Validación</h2>
-                <ul class="list-disc list-inside text-gray-700">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            @endif
-            <button @click="show = false" class="mt-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">
-                Cerrar
-            </button>
-        </div>
-    </x-modal>
+    @include('gestion/partials.modal_mensajes')
 
     @include('gestion.partials.updateRegister')
 </x-app-layout>
@@ -87,6 +66,41 @@
         cedulaOld.value= rowData["cedula"];
         cedulaOld.style.display = "none";
         }
+        
+        function soloLetras(e) {
+        // Obtiene el código de la tecla presionada
+        const key = e.key;
+
+        // Comprueba si la tecla es una letra (a-z, A-Z) o una tecla de control (como Backspace)
+        const regex = /^[a-zA-Z]+$/;
+
+        // Permite la tecla si es una letra o una tecla de control
+        if (!regex.test(key) && !['Backspace', 'Tab', 'Enter'].includes(key)) {
+            e.preventDefault(); // Evita la entrada
+        }
+        }
+        function soloNumeros(e) {
+            const key = e.key;
+            const regex = /^[0-9-]+$/; // Permite números y guiones
+
+            // Permite la tecla si es un número, un guion o una tecla de control
+            if (!regex.test(key) && !['Backspace', 'Tab', 'Enter'].includes(key)) {
+                e.preventDefault(); // Evita la entrada
+            }
+        }   
+
+        
+        // Asignar el evento onkeypress a los inputs
+        document.getElementById('nombre').addEventListener('keypress', soloLetras);
+        document.getElementById('apellido').addEventListener('keypress', soloLetras);
+        document.getElementById('cedula').addEventListener('keypress', soloNumeros);
+        document.getElementById('telefono').addEventListener('keypress', soloNumeros);
+        
+         // Asignar el evento onkeypress a los inputs de actualización
+         document.getElementById('nombreUpdate').addEventListener('keypress', soloLetras);
+        document.getElementById('apellidoUpdate').addEventListener('keypress', soloLetras);
+        document.getElementById('cedulaUpdate').addEventListener('keypress', soloNumeros);
+        document.getElementById('telefonoUpdate').addEventListener('keypress', soloNumeros);
 </script>
 
 

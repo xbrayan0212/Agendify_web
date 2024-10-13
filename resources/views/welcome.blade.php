@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>{{ config('app.name', 'Agendify') }}</title>
+    <link rel="icon" href="{{ asset('imagenes/logo.svg') }}" type="image/svg+xml">
+
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -147,8 +149,6 @@
             </section>
         </main>
 
-        <footer class="bg-gray-800 text-white text-center py-4">
-            <p>&copy; 2024 Agendify. Todos los derechos reservados.</p>
-        </footer>
+        @include('layouts.footer')
     </body>
 </html>

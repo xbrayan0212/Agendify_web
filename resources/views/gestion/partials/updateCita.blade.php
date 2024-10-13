@@ -18,7 +18,7 @@
             :atributos="$atributos"
         />
         <x-input-label for="estado" class="block text-stone-950 mb-2">Estado: </x-input-label>
-        <select name="estadoUpdate" id="estadoUpdate" class="border border-stone-300 rounded-md p-2 w-full focus:outline-none focus:ring focus:ring-stone-500">
+        <select name="estado" id="estadoUpdate" class="border border-stone-300 rounded-md p-2 w-full focus:outline-none focus:ring focus:ring-stone-500">
             <option value="Cancelada">Cancelada</option>
             <option value="Finalizada">Finalizada</option>
             <option value="Pendiente">Pendiente</option>

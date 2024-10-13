@@ -38,9 +38,4 @@ class Cita extends Model
     {
         return $this->hasOne(Historial::class, 'id_cita');
     }
-
-    public function recordatorios()
-    {
-        return $this->hasMany(Recordatorio::class, 'id_cita');
-    }
 }
