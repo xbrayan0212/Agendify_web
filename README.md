@@ -69,6 +69,5 @@ Este proyecto está bajo la licencia MIT.
 
 ## Contacto
 Brayan Rodríguez - [xbrayan02.dev@gmail.com](brayan:xbrayan02.dev@gmail.com)
-[LinkedIn](www.linkedin.com/in/brayan-rodríguez-5bbbb22a5) | [Twitter](tu-twitter)
 
 
