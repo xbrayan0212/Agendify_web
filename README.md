@@ -67,8 +67,7 @@
 
 ## Dashboard
 ![image](https://github.com/user-attachments/assets/821e7780-8781-44d3-adeb-f557b530c6ea)
-![image](https://github.com/user-attachments/assets/991b0c2a-25be-47b4-9b58-49ef3137de65)
-
+![Screenshot from 2024-10-13 13-43-33](https://github.com/user-attachments/assets/ee5ca4ae-4c47-448d-9aa7-9f3a6424a9c7)
 
 
 
