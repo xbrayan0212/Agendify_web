@@ -69,6 +69,13 @@
 ![image](https://github.com/user-attachments/assets/821e7780-8781-44d3-adeb-f557b530c6ea)
 ![Screenshot from 2024-10-13 13-43-18](https://github.com/user-attachments/assets/0a8da12a-31d0-43f1-aa10-0c3ea3675f89)
 
+## Calendario
+![image](https://github.com/user-attachments/assets/73d1cda9-a9cf-4f53-8e15-65f4285b9516)
+![Screenshot from 2024-10-13 13-48-00](https://github.com/user-attachments/assets/fb23464a-d295-4115-ba66-2576db5e58da)
+
+## Cliente
+![Screenshot from 2024-10-13 13-49-02](https://github.com/user-attachments/assets/c67dc424-df70-43bf-8351-5ff980d1e2f6)
+![Screenshot from 2024-10-13 13-49-48](https://github.com/user-attachments/assets/05e19acd-c3cc-4a60-a6c6-6ccc9031da94)
 
 
 
