@@ -76,9 +76,13 @@
 ## Cliente
 ![Screenshot from 2024-10-13 13-49-02](https://github.com/user-attachments/assets/c67dc424-df70-43bf-8351-5ff980d1e2f6)
 ![Screenshot from 2024-10-13 13-49-48](https://github.com/user-attachments/assets/05e19acd-c3cc-4a60-a6c6-6ccc9031da94)
+![Screenshot from 2024-10-13 13-50-50](https://github.com/user-attachments/assets/3d77a67d-710e-4607-a47a-932831fff27d)
 
+## Citas
+![Screenshot from 2024-10-13 13-51-40](https://github.com/user-attachments/assets/2d3ba5c1-f35f-46bd-8b79-e34c9a5f45a0)
+![Screenshot from 2024-10-13 13-52-39](https://github.com/user-attachments/assets/8e0c964c-6e54-4760-bda0-6c16db263081)
 
-
+![Screenshot from 2024-10-13 13-52-39](https://github.com/user-attachments/assets/32a7df85-e291-4ae8-92e3-6e02da2caad8)
 
 ## Contribuciones
 Si deseas contribuir al proyecto, por favor abre un issue o envía un pull request. 
