@@ -59,8 +59,17 @@
    ```
 
 ## Ejemplo de Uso
-##Home
+## Home
 ![image](https://github.com/user-attachments/assets/8eadb006-eee2-4041-9600-37ef1ae41146)
+
+## Registro
+![image](https://github.com/user-attachments/assets/06f92848-2129-4a1f-a420-d03ba641efaa)
+
+## Dashboard
+![image](https://github.com/user-attachments/assets/821e7780-8781-44d3-adeb-f557b530c6ea)
+![image](https://github.com/user-attachments/assets/325a48fa-4ba9-4d34-a60d-7270161897a5)
+
+
 
 
 
