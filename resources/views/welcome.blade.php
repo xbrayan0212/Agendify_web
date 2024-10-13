@@ -75,9 +75,10 @@
                 <p class="text-lg md:text-xl text-gray-700 mb-4 text-center max-w-4xl mx-auto py-10 leading-9">
                     Un sistema intuitivo diseñado para ayudar a profesionales como consultores, abogados y médicos a gestionar sus citas y consultas con clientes o pacientes de manera eficiente.
                 </p>
-                <button class="bg-[#2B318A] text-white py-3 px-6 rounded-lg shadow-md hover:bg-[#1a1f5e] transition-colors transform hover:scale-105">
+                <a href="{{ route('login') }}" class="bg-[#2B318A] text-white py-3 px-6 rounded-lg shadow-md hover:bg-[#1a1f5e] transition-colors transform hover:scale-105">
                     Comienza Ahora
-                </button>
+                </a>
+                
             </div>
 
             <section class="rounded-lg p-8 my-10">
