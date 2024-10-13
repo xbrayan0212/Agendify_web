@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\Gestion\CitasController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\ShareNextCita; 
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', ShareNextCita::class])->group(function (){
     
     Route::get('/citas', [CitasController::class, 'index'])->middleware(['auth', 'verified'])->name('citas');
     Route::post('citas/guardar', [CitasController::class, 'guardar'])->name('citas.guardar');
