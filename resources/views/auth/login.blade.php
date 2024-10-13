@@ -2,7 +2,7 @@
     <div class="flex justify-center items-center p-4 h-[940px]">
         <!-- Imagen a la izquierda -->
         <div class="hidden md:block w-1/2 bg-gray-100 h-full">
-            <img src=""
+            <img src="{{asset('imagenes/guest.jpg')}}"
                 alt="Imagen de fondo"
                 class="object-none h-full w-full rounded-l-lg shadow-lg">
         </div>

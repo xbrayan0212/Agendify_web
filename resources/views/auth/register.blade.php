@@ -1,9 +1,12 @@
 <x-guest-layout>
-    <div class="flex justify-center items-center p-4">
+    <div class="flex justify-center items-center p-4 h-[820px]">
         <!-- Imagen a la izquierda -->
-        <div class="hidden md:block w-1/2 bg-gray-100 h-[940px]">
-            <img src="">
+        <div class="hidden md:block w-1/2 bg-gray-100 h-full">
+            <img src="{{asset('imagenes/guest.jpg')}}"
+                alt="Imagen de fondo"
+                class="object-none h-full w-full rounded-l-lg shadow-lg">
         </div>
+
 
         <!-- Formulario a la derecha -->
         <div class="w-full md:w-1/2 p-6 bg-white shadow-md rounded-lg">

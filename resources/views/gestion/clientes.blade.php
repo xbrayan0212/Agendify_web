@@ -66,6 +66,41 @@
         cedulaOld.value= rowData["cedula"];
         cedulaOld.style.display = "none";
         }
+        
+        function soloLetras(e) {
+        // Obtiene el código de la tecla presionada
+        const key = e.key;
+
+        // Comprueba si la tecla es una letra (a-z, A-Z) o una tecla de control (como Backspace)
+        const regex = /^[a-zA-Z]+$/;
+
+        // Permite la tecla si es una letra o una tecla de control
+        if (!regex.test(key) && !['Backspace', 'Tab', 'Enter'].includes(key)) {
+            e.preventDefault(); // Evita la entrada
+        }
+        }
+        function soloNumeros(e) {
+            const key = e.key;
+            const regex = /^[0-9-]+$/; // Permite números y guiones
+
+            // Permite la tecla si es un número, un guion o una tecla de control
+            if (!regex.test(key) && !['Backspace', 'Tab', 'Enter'].includes(key)) {
+                e.preventDefault(); // Evita la entrada
+            }
+        }   
+
+        
+        // Asignar el evento onkeypress a los inputs
+        document.getElementById('nombre').addEventListener('keypress', soloLetras);
+        document.getElementById('apellido').addEventListener('keypress', soloLetras);
+        document.getElementById('cedula').addEventListener('keypress', soloNumeros);
+        document.getElementById('telefono').addEventListener('keypress', soloNumeros);
+        
+         // Asignar el evento onkeypress a los inputs de actualización
+         document.getElementById('nombreUpdate').addEventListener('keypress', soloLetras);
+        document.getElementById('apellidoUpdate').addEventListener('keypress', soloLetras);
+        document.getElementById('cedulaUpdate').addEventListener('keypress', soloNumeros);
+        document.getElementById('telefonoUpdate').addEventListener('keypress', soloNumeros);
 </script>
 
 
