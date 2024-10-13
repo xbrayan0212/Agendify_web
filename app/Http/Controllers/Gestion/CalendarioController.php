@@ -30,24 +30,26 @@ class CalendarioController extends Controller
             ->get();
 
 
-
-
         // Agrupar citas por fecha
         $citasPorDia = [];
         foreach ($citas as $cita) {
-            $observaciones_cita = Historial::where('id_profesional',$userId)
-            ->where('id_cita',$cita->id)
-            ->get();
+            // Obtener la primera observación, si existe
+            $observaciones_cita = Historial::where('id_profesional', $userId)
+                ->where('id_cita', $cita->id)
+                ->pluck('observaciones')
+                ->first(); // Obtiene el primer valor de la colección o null si no hay registros
+            
             $citasPorDia[$cita->fecha][] = [
-                'id'=>$cita->id,
+                'id' => $cita->id,
                 'nombre' => $cita->cliente->nombre . ' ' . $cita->cliente->apellido,
                 'servicio' => $cita->servicio->nombre_servicio,
-                'estado'=>$cita->estado,
+                'estado' => $cita->estado,
                 'hora' => Carbon::parse($cita->hora)->format('H:i'), // Formato 24 horas
                 'motivo' => $cita->motivo,
-                'observaciones' => $observaciones_cita,
+                'observaciones' => $observaciones_cita, // Puede ser una cadena o null
             ];
         }
+
 
         for ($dia = 1; $dia <= $diasEnElMes; $dia++) {
             $fecha = Carbon::create($fechaActual->year, $fechaActual->month, $dia);

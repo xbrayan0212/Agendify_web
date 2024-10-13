@@ -32,8 +32,9 @@
             </div>
             <div>
                 <label for="observaciones" class="block text-gray-600 font-semibold">Agregar Observaciones:</label>
-                <input type="text" id="observaciones" name="observaciones" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Escribe aquí...">
+                <textarea id="observaciones" name="observaciones" rows="4" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Escribe aquí..."></textarea>
             </div>
+            
             <input type="text" name="id" id="modal-id_cita" hidden>
             <!-- Botón Enviar -->
             <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Enviar</button>

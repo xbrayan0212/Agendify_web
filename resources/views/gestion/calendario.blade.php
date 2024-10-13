@@ -62,7 +62,8 @@
     </div>
 </x-app-layout>
 <script>
-    function openModal(id, servicio, nombre, hora, estado) {
+    function openModal(id, servicio, nombre, hora, estado , observaciones) {
+        console.log(observaciones)
         // Asignar valores a los elementos del modal
         document.getElementById('modal-servicio').innerText = servicio;
         document.getElementById('modal-nombre').innerText = nombre;
@@ -72,6 +73,8 @@
         // Seleccionar el estado actual en el select
         const estadoSelect = document.getElementById('select-modal-estado');
         estadoSelect.value = estado;
+        const observacionesInput = document.getElementById('observaciones');
+        observacionesInput.value = observaciones;
 
         // Mostrar el modal
         const modal = document.getElementById('modal');
