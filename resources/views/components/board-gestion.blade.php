@@ -1,4 +1,4 @@
-<div class="bg-white rounded-2xl shadow-lg mx-auto my-3 p-4 font-Poppins max-w-[1200px] min-h-96">
+<div class="bg-white rounded-2xl shadow-lg mx-auto my-3 p-8 font-Poppins max-w-[1200px] min-h-96">
     <div>
         <h2 class="text-stone-950 text-left text-xl md:text-2xl lg:text-2xl my-4 px-4">{{ $title }}</h2>
         <form action="{{ route($ruta) }}" method="GET">
@@ -13,8 +13,8 @@
             </div>
         </form>
     </div>
-        <div class="overflow-x-auto  max-h-96">
-            <table class="min-w-full text-left divide-y divide-gray-200 ">
+        <div class="overflow-x-auto  min-h-96">
+            <table class="min-w-full text-left divide-y divide-gray-200  ">
                 <thead>
                     <tr class="text-sm font-medium text-gray-700 rounded-lg">
                         @foreach ($atributos as $atributo)
@@ -23,7 +23,7 @@
                         <th class="px-6 py-3 border-b border-gray-200 sticky top-0 z-10 bg-blue-50">Acciones</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-100">
+                <tbody class="divide-y divide-gray-100 ">
                     @foreach ($rows as $row)
                         <tr class="hover:bg-gray-50 transition-colors">
                             @foreach($atributos as $atributo)
