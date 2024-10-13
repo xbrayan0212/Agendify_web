@@ -77,8 +77,7 @@
                 </p>
                 <a href="{{ route('login') }}" class="bg-[#2B318A] text-white py-3 px-6 rounded-lg shadow-md hover:bg-[#1a1f5e] transition-colors transform hover:scale-105">
                     Comienza Ahora
-                </a>
-                
+                </a>                
             </div>
 
             <section class="rounded-lg p-8 my-10">
