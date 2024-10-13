@@ -59,8 +59,9 @@
    ```
 
 ## Ejemplo de Uso
-Aquí puedes agregar una captura de pantalla de la aplicación o un breve tutorial sobre cómo registrarse y agendar una cita.
-![image](https://github.com/user-attachments/assets/8f761e96-63a0-40f2-ab88-10d2a8a15206)
+##Home
+![image](https://github.com/user-attachments/assets/8eadb006-eee2-4041-9600-37ef1ae41146)
+
 
 
 
